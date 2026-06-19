@@ -82,16 +82,13 @@ static const struct ra_ctx_fns *const contexts[] = {
     &ra_ctx_d3d11,
 #endif
 
-// Vulkan contexts:
+// Vulkan contexts :
 #if HAVE_VULKAN
 #if HAVE_WIN32_DESKTOP
     &ra_ctx_vulkan_win,
 #endif
 #if HAVE_WAYLAND
     &ra_ctx_vulkan_wayland,
-#endif
-#if HAVE_X11
-    &ra_ctx_vulkan_xlib,
 #endif
 #if HAVE_COCOA && HAVE_SWIFT
     &ra_ctx_vulkan_mac,
@@ -126,6 +123,9 @@ static const struct ra_ctx_fns *const contexts[] = {
 
 // Vulkan contexts (fallbacks):
 #if HAVE_VULKAN
+#if HAVE_X11
+    &ra_ctx_vulkan_xlib,
+#endif
 #if HAVE_ANDROID
     &ra_ctx_vulkan_android,
 #endif
